@@ -1,0 +1,6 @@
+# admin_monitor extension
+comment = 'system status functions for PostgreSQL'
+default_version = '1.0'
+module_pathname = '$libdir/admin_monitor'
+relocatable = false
+schema = pg_catalog
