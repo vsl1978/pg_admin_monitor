@@ -1,9 +1,10 @@
 cc=cc
 VERSION=`sed -nr 's/^.*default_version.*=[^0-9]*([0-9.]++).*/\1/p' src/admin_monitor.control`
+ARCH=`uname -i`
 
-target/pg_admin_monitor : target/admin_monitor.so target/admin_monitor.control
-	cd target; tar -czf pg_admin_monitor.tgz admin_monitor.so *.sql *.control
-	cd target; zip pg_admin_monitor.zip admin_monitor.so *.sql *.control
+all : target/admin_monitor.so target/admin_monitor.control
+	cd target; tar -czf pg_admin_monitor_linux_$(ARCH).tgz admin_monitor.so *.sql *.control
+	cd target; zip pg_admin_monitor_linux_$(ARCH).zip admin_monitor.so *.sql *.control
 
 target/admin_monitor.control :
 	cp src/admin_monitor.sql target/admin_monitor--$(VERSION).sql
